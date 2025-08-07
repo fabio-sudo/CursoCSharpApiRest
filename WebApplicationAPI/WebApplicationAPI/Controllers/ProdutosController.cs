@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationAPI.Interfaces;
 using WebApplicationAPI.Model;
 
 namespace WebApplicationAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ProdutosController : Controller
@@ -15,6 +17,7 @@ namespace WebApplicationAPI.Controllers
         {
             _produtoRepository = produtoRepository;
         }
+
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Produto>>> Get()
